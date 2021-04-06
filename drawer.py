@@ -14,7 +14,7 @@ def drawLine1(x0, y0, x1, y1, img, color):
 def drawLine2(x0, y0, x1, y1, img, color):
     x = x0
     while x <= x1:
-        t = (x - x0) / (float)(x1 - x0)
+        t = (x - x0) / float(x1 - x0)
         y = y0 * (1. - t) + y1 * t
         x += 1
         img.putpixel((int(x), int(y)), color)
@@ -31,14 +31,13 @@ def drawLine3(x0, y0, x1, y1, img, color):
         y0, y1 = y1, y0
     x = x0
     while x <= x1:
-        t = (x - x0) / (float)(x1 - x0)
+        t = (x - x0) / float(x1 - x0)
         y = y0 * (1. - t) + y1 * t
         if steep:
             img.putpixel((int(x), int(y)), color)
         else:
             img.putpixel((int(y), int(x)), color)
         x += 1
-
 
 
 def lineBres(x0, y0, x1, y1, img, color):
@@ -73,16 +72,16 @@ def lineBres(x0, y0, x1, y1, img, color):
 
 def draw_line(x1, y1, x2, y2, img, color):
     change = False
-    if (np.abs(x2 - x1) < np.abs(y2 - y1)):
+    if np.abs(x2 - x1) < np.abs(y2 - y1):
         x1, y1 = y1, x1
         x2, y2 = y2, x2
         change = True
-    if (x1 > x2):
+    if x1 > x2:
         x1, x2 = x2, x1
         y1, y2 = y2, y1
     dx = x2 - x1
     y = y1
-    if (y2 > y1):
+    if y2 > y1:
         step_y = 1
     else:
         step_y = -1
@@ -94,7 +93,7 @@ def draw_line(x1, y1, x2, y2, img, color):
         else:
             img.putpixel((int(x), int(y)), color)
         dsum += derror
-        if (dsum > dx):
+        if dsum > dx:
             dsum -= 2 * dx
             y += step_y
 
